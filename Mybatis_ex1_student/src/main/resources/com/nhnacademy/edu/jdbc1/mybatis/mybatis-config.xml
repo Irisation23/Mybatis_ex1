@@ -17,5 +17,6 @@
     </environments>
     <mappers>
         <mapper resource="com/nhnacademy/edu/jdbc1/mybatis/StudentMapper.xml"/>
+        <mapper class="com.nhnacademy.edu.jdbc1.mybatis.mapper.StudentMapper" />
     </mappers>
 </configuration>

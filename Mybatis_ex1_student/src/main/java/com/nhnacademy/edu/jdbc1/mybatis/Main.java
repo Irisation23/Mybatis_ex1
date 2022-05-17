@@ -1,5 +1,6 @@
 package com.nhnacademy.edu.jdbc1.mybatis;
 
+import com.nhnacademy.edu.jdbc1.mybatis.mapper.StudentMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -14,9 +15,15 @@ public class Main {
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
+
+
         try (SqlSession session = sqlSessionFactory.openSession()) {
             Students student = session.selectOne("com.nhnacademy.edu.jdbc1.mybatis.StudentMapper.selectStudent", 1);
             System.out.println(student);
+
+            StudentMapper mapper = session.getMapper(StudentMapper.class);
+            Students mapperStudent = mapper.selectStudent(2);
+            System.out.println(mapperStudent);
         }
 
     }
